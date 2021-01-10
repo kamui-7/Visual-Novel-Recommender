@@ -1,0 +1,4 @@
+1. Blur certain cover images
+2. Loading spinner
+3. Smooth transitions of cards and searchbar
+4. Refractor and add types

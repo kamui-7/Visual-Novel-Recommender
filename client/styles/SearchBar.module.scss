@@ -1,0 +1,26 @@
+.search_container {
+  width: 40rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  color: #9e9ea7;
+
+  .searchbar {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 19px 38px rgba(214, 212, 212, 0.233),
+      0 5px 12px rgba(218, 218, 218, 0.397);
+    border-radius: 4px;
+    padding: 2rem;
+    font-size: 16px;
+    padding-left: 3rem;
+  }
+
+  .icon {
+    position: absolute;
+    width: 16px;
+    margin-left: 20px;
+    z-index: 1;
+  }
+}

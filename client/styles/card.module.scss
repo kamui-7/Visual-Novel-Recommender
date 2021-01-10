@@ -1,0 +1,36 @@
+.card {
+  border-radius: 3px;
+  box-shadow: 0 19px 38px rgba(214, 212, 212, 0.233),
+    0 5px 12px rgba(218, 218, 218, 0.397);
+  display: flex;
+  align-items: center;
+
+  width: 37rem;
+
+  .info {
+    .cover {
+      height: 20rem;
+      filter: blur(8px);
+      -webkit-filter: blur(8px);
+    }
+
+    h3 {
+      padding-left: 1rem;
+    }
+
+    a {
+      color: #4a566b;
+      transition: all linear;
+
+      &:hover {
+        opacity: 50%;
+      }
+    }
+
+    p {
+      padding-left: 1rem;
+      padding-right: 0.8rem;
+      padding-bottom: 1rem;
+    }
+  }
+}

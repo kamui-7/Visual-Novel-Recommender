@@ -1,10 +1,12 @@
 from flask import Flask
+from flask_cors import CORS
 from collections import defaultdict
 from bs4 import BeautifulSoup as bs
 from surprise import Dataset, Reader, SVD, accuracy
 from surprise.model_selection import cross_validate, train_test_split
 from collections import defaultdict
 from pprint import pprint
+from vndb import VNDB
 import pandas as pd
 import pickle
 import json
@@ -56,19 +58,17 @@ def gen_model():
     temp = pd.DataFrame(testset)
     temp.to_csv("test_data.csv")
 
-def get_vn_image(self, vn_id):
-    res = requests.get(f"https://vndb.org/v{int(vn_id)}").text
-    soup = bs(res, "html.parser")
-    img = soup.find("div", class_="vnimg")
-    img = img.find("img").get("src")
-    return img
 
 app = Flask(__name__)
+CORS(app)
 
 # predict_vns()
 
 with open("data/output_data.json") as f:
     top_v = json.load(f)
+
+vndb = VNDB()
+
 
 @app.route("/user/<username>")
 def get_recommendations_for_user(username):
@@ -76,9 +76,11 @@ def get_recommendations_for_user(username):
     matches = df[df["uname"] == username]["uid"]
     if matches.any():
         user_id = matches.iloc[0]
-        recs = top_v[str(user_id)]
+        recs = top_v[str(user_id)][:NUM_RECS]
         for iid, _ in recs:
-            title = df[df["iid"] == iid]["title"].iloc[0]
-            res["data"].append(title)
+            data = vndb.get(f"get vn basic,details (id = {iid})")["items"][0]
+            res["data"].append(data)
     return res
 
+
+app.run(port=5000)

@@ -1,0 +1,35 @@
+.bg {
+  background-color: #8e7dbe;
+  width: 100%;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #f1e3d3;
+
+  h3 {
+    margin: 0;
+    font-size: 3.4rem;
+  }
+
+  h2 {
+    font-weight: 500;
+  }
+}
+
+.search {
+  transform: translateY(-50%);
+  width: 50%;
+  margin: 0 auto;
+}
+
+.cardgrid {
+  width: 70%;
+  margin: 0 auto;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
